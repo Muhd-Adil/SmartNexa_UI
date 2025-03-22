@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import "./css/Products.css"
-import AddProducts from "./AddProducts"
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import PriceRangeFilter from '../components/PriceRangeFilter';
@@ -27,7 +26,6 @@ const Products = () => {
   return (
     <>
         <div className="container-fluid product-container">
-            <AddProducts/>
             <div className="header mb-3">
               <h4>Products</h4>
             </div>
@@ -58,7 +56,7 @@ const Products = () => {
               <div className="col-9 product-list-section pt-3">
                 <div className="row product-list-header">
                   <div className="col-7 addproduct-btn-box">
-                    <Link to="add-products">
+                    <Link to="/seller/add-products">
                       <button className='add-product_btn'>+ Add Product</button>
                     </Link>
                   </div>
@@ -94,8 +92,8 @@ const Products = () => {
                 <div className="product-list-table">
                   <ProductsTable/>
                 </div>
-              </div>
             </div>
+          </div>
         </div>
     </>
   );

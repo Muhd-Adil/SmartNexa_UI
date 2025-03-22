@@ -79,7 +79,9 @@ const AddProducts = () => {
             <div className="container-fluid mt-3 p-4">
               <div className='header'>
                 <div className="back-button">
-                  <Link to="products"><img src={BackArrowIcon} alt="Back arrow icon" width={21} height={21} className='pb-1'/></Link>
+                  <Link to="/seller/products">
+                    <img src={BackArrowIcon} alt="Back arrow icon" width={21} height={21} className='pb-1'/>
+                  </Link>
                 </div>
                 <div className="text-box">
                   <p>back to product list</p>
