@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import './css/Login.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import ShowPasswordIcon from './icons/show-password.svg'
+import HidePasswordIcon from './icons/hide-password.svg'
+import IntroImage from './images/intro-img.jpeg'
 
 let data = {}
 const Login = () => {
@@ -8,7 +13,12 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [error,setError] = useState('');
     const navigate = useNavigate(); 
+    const [showPassword, setShowPassword] = useState(false);
 
+    const handleTogglePassword = () => {
+      setShowPassword((prevShowPassword) => !prevShowPassword);
+    };
+  
     useEffect(() => {
       const accessToken = localStorage.getItem('access');
   
@@ -94,19 +104,49 @@ const Login = () => {
 
   return (
     <>
-        <div className='container'>
-            <h1>Sign in</h1>
-            <form>
-                <input type="text" name="username" onChange={(e) => setUsername(e.target.value)} value={username} placeholder="Username"/>
-                <input type="password" name="password" onChange={(e) => setPassword(e.target.value)} value={password}/>
-                <div>{error}</div>
-                <button onClick={handleSubmit}>Sign in</button>
-            </form>
-            <p>Don't have an account <a href="">Sign Up</a></p>
-
-            <div>
-                <pre>{data.type}</pre>
+        <div className='layout-wrapper'>
+            <div className="row d-flex">
+              <div className="brand-container col-md-6">
+                {/* <h1>SmartNexa</h1> */}
+                <div className="img-container mt-1 ms-1">
+                  <img src={IntroImage} alt="" className="intro-img"/>
+                </div>
+              </div>
+              <div className="login-content-wrapper col-md-6">
+                <h2 className="brands-name text-center mt-2 mb-5">SmartNexa</h2>
+                <h3 className="text-center">Welcome back!</h3>
+                <p className="text-center">We are glad to see you again.</p>
+                <div className="login-container">
+                  {/* <h3 className="text-center">Sign in</h3> */}
+                  <div className="login-form d-flex flex-column justify-content-center align-items-center">
+                    <form className="d-flex flex-column align-items-start">
+                        <label htmlFor="email/username">Email/Username</label>
+                        <input type="text" id="email/username" className="mb-4" name="username" onChange={(e) => setUsername(e.target.value)} value={username}/>
+                        <label htmlFor="password">Password</label>
+                        <div className="password-inputgroup">
+                          <input type={showPassword ? "text" : "password"} id="password" name="password" onChange={(e) => setPassword(e.target.value)} value={password} />
+                          <span onClick={handleTogglePassword}>
+                            <img 
+                              src={showPassword ? HidePasswordIcon : ShowPasswordIcon}
+                              alt={showPassword ? "Hide password" : "Show password"}
+                            />
+                          </span>
+                        </div>
+                        <div>{error}</div>
+                        <button onClick={handleSubmit} className="login-btn mt-4">Sign in</button>
+                    </form>
+                    <div className="auth-links d-flex flex-column align-items-start mt-3">
+                      <p className="text-start">Don't have an account <Link to='/signup'>Sign Up</Link></p>
+                      <p className="">Forgot Password? <Link to='/forgot-password'>Reset</Link></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
             </div>
+            {/* <footer>
+                <p>© 2021 SmartNexa. All rights reserved</p>
+            </footer> */}
         </div>
     </>
   )
