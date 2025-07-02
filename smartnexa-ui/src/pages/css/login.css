@@ -46,15 +46,15 @@
     /* border: 1px solid #007bff; */
 }
 
-.password-inputgroup{
+.password-inputgroup-login{
     position: relative;
 }
 
-.password-inputgroup span{
+.password-inputgroup-login span{
     position: absolute;
     right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 20%;
+    /* transform: translateY(0%); */
     cursor: pointer;
 }
 

@@ -123,7 +123,7 @@ const Login = () => {
                         <label htmlFor="email/username">Email/Username</label>
                         <input type="text" id="email/username" className="mb-4" name="username" onChange={(e) => setUsername(e.target.value)} value={username}/>
                         <label htmlFor="password">Password</label>
-                        <div className="password-inputgroup">
+                        <div className="password-inputgroup-login">
                           <input type={showPassword ? "text" : "password"} id="password" name="password" onChange={(e) => setPassword(e.target.value)} value={password} />
                           <span onClick={handleTogglePassword}>
                             <img 
